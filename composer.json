@@ -1,0 +1,15 @@
+{
+  "name": "betweentwopoints/php-workopia",
+  "description": "PHP job listing project",
+  "authors": [
+    {
+      "name": "betweenTwoPoints"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
