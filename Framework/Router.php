@@ -88,6 +88,12 @@ class Router
     public function route($uri)
     {
         $requestMethod = $_SERVER['REQUEST_METHOD'];
+
+        // Check for _method input
+        if ($requestMethod === 'POST' && isset($_POST['_method'])) {
+            $requestMethod = strtoupper($_POST['_method']);
+        }
+
         foreach ($this->routes as $route) {
             // Split current URI into segments
             $uriSegments = explode('/', trim($uri, '/'));
@@ -117,7 +123,7 @@ class Router
 
                 if ($match) {
                     // Extract controller and its method
-                    $controller = 'App\\controllers\\' . $route['controller'];
+                    $controller = 'App\\Controllers\\' . $route['controller'];
                     $controllerMethod = $route['controllerMethod'];
 
                     // Instatiate the controller and call the method
